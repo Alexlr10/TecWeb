@@ -1,4 +1,4 @@
-﻿@model Disciplina
+﻿@model  List<Disciplina>
 
 @{
     ViewBag.Title = "Disciplina";
@@ -6,5 +6,9 @@
 
 <h2>Disciplina</h2>
 
-@Model.Nome
+<ul>
+    @foreach (var disciplina in @Model) {
+        <li>@disciplina.Nome</li>
+    }
 
+</ul>

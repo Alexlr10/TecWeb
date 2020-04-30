@@ -1,9 +1,14 @@
-﻿@model Aluno
-@{
+﻿@model List<Aluno>
+@{ 
     ViewBag.Title = "Aluno";
 }
 
 <h2>Aluno</h2>
 
-@Model.Nome
+<ul>
+   @foreach(var aluno in @Model) {
+       <li>@aluno.Nome</li>
+   }
+
+</ul>
 
