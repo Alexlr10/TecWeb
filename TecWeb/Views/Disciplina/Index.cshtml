@@ -5,10 +5,11 @@
 }
 
 <h2>Disciplina</h2>
-
+<p>@ViewBag.idAluno</p>
+<p>@ViewBag.nomeAluno</p>
 <ul>
     @foreach (var disciplina in @Model) {
-        <li>@disciplina.Nome</li>
+        <li><a href="">@disciplina.Nome</a></li>
     }
 
 </ul>
