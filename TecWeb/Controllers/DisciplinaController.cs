@@ -29,13 +29,14 @@ namespace TecWeb.Controllers {
             disciplina.Add(new Disciplina(4, 5, "Arquitetura de Computadores", "1A", "SI"));
             disciplina.Add(new Disciplina(4, 6, "Arquitetura de Computadores", "1A", "SI"));
 
+            List<Disciplina> DisciplinasDeAluno = disciplina.Where(x => x.IdAluno == idAluno).ToList();
 
 
 
 
 
 
-            return View(disciplina);
+            return View(DisciplinasDeAluno);
         }
     }
 }

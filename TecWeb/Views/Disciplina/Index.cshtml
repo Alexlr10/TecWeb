@@ -7,9 +7,29 @@
 <h2>Disciplina</h2>
 <p>@ViewBag.idAluno</p>
 <p>@ViewBag.nomeAluno</p>
-<ul>
-    @foreach (var disciplina in @Model) {
-        <li><a href="">@disciplina.Nome</a></li>
-    }
 
-</ul>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Cod . Disciplina</td>
+            <td>Aluno</td>
+            <td>Disciplina</td>
+            <td>Semestre</td>
+            <td>Curso</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var disciplina in @Model) {
+            <tr>
+                <td>@disciplina.IdDisciplina</td>
+                <td>@ViewBag.nomeAluno</td>
+                <td>@disciplina.Nome</td>
+                <td>@disciplina.Semestre</td>
+                <td>@disciplina.Curso</td>
+              
+            </tr>
+        }
+
+    </tbody>
+</table>
+
