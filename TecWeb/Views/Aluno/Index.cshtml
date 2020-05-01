@@ -3,12 +3,16 @@
     ViewBag.Title = "Aluno";
 }
 
-<h2>Aluno</h2>
+<br />
+<div class="list-group">
+    <a href="#" class="list-group-item active">
+    Aluno
+    </a>
+    @foreach (var aluno in @Model) {
+        // /Disciplina/Index?idAluno=@aluno.IdAluno&nomeAluno=@aluno.Nome">@aluno.Nome
+        <a href="@Url.Action("index","Disciplina", new { IdAluno = @aluno.IdAluno, nomeAluno = @aluno.Nome })" 
+           class="list-group-item">@aluno.Nome</a>
+    }
+</div>
 
-<ul>
-   @foreach(var aluno in @Model) {
-       <li><a href="/Disciplina/Index?idAluno=@aluno.IdAluno&nomeAluno=@aluno.Nome">@aluno.Nome</a></li>
-   }
-
-</ul>
 
