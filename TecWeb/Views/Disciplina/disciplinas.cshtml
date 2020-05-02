@@ -1,0 +1,30 @@
+﻿@model  List<Disciplina>
+@{
+    ViewBag.Title = "disciplinas";
+}
+
+<h2>disciplinas</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Cod . Disciplina</td>
+            <td>Disciplina</td>
+            <td>Semestre</td>
+            <td>Curso</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var disciplina in @Model) {
+            <tr>
+                <td>@disciplina.IdDisciplina</td>
+                <td>@disciplina.Nome</td>
+                <td>@disciplina.Semestre</td>
+                <td>@disciplina.Curso</td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+

@@ -16,7 +16,7 @@ namespace TecWeb.Controllers {
             ViewBag.idAluno = idAluno;
             ViewBag.nomeAluno = nomeAluno;
 
-            List<Disciplina> disciplina = Disciplina.listarDisciplina(idAluno);
+            List<Disciplina> disciplina = Disciplina.listarDisciplinaPeloAluno(idAluno);
 
             //disciplina.Add(new Disciplina(1, 1, "Tecnologia Web", "5A", "SI"));
             //disciplina.Add(new Disciplina(1, 2, "Banco de Dados 1 ", "5A", "SI"));
@@ -38,5 +38,10 @@ namespace TecWeb.Controllers {
 
             return View(disciplina);
         }
+
+       public ActionResult disciplinas() {
+            List<Disciplina> disciplina = Disciplina.listarDisciplina();
+            return View(disciplina);
+        }  
     }
 }
