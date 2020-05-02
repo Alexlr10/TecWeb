@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -15,6 +17,24 @@ namespace TecWeb.Models {
             Nome = nome;
             RA = rA;
             DataNascimento = dataNascimento;
+        }
+        public static List<Aluno> listarAluno() {
+            SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
+            minhaConexao.Open();
+
+            string select = "SELECT * FROM Aluno";
+            SqlCommand selectCommand = new SqlCommand(select, minhaConexao);
+            SqlDataReader sqlRead = selectCommand.ExecuteReader();
+
+
+            List<Aluno> Alunos = new List<Aluno>();
+            while (sqlRead.Read()) {
+                Alunos.Add(new Aluno(int.Parse(sqlRead["IdAluno"].ToString()),
+                                     sqlRead["Nome"].ToString(),
+                                     int.Parse(sqlRead["RA"].ToString()),
+                                     Convert.ToDateTime(sqlRead["DataNascimento"].ToString())));
+            }
+            return Alunos;
         }
     }
 }

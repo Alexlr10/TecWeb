@@ -16,25 +16,7 @@ namespace TecWeb.Controllers {
             ViewBag.idAluno = idAluno;
             ViewBag.nomeAluno = nomeAluno;
 
-            SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
-            minhaConexao.Open();
-
-            string select = "SELECT * from Disciplina inner join AlunoDisciplina " +
-                "on Disciplina.IdDisciplina = AlunoDisciplina.IdDisciplina where AlunoDisciplina.IdAluno = " + idAluno;
-            SqlCommand selectCommand = new SqlCommand(select, minhaConexao);
-            SqlDataReader sqlRead = selectCommand.ExecuteReader();
-
-
-            List<Disciplina> disciplina = new List<Disciplina>();
-
-            while (sqlRead.Read()) {
-                disciplina.Add(new Disciplina(int.Parse(sqlRead["IdDisciplina"].ToString()),
-                                     idAluno,
-                                     sqlRead["Nome"].ToString(),
-                                     sqlRead["Semestre"].ToString(),
-                                     sqlRead["Curso"].ToString()));
-            }
-
+            List<Disciplina> disciplina = Disciplina.listarDisciplina(idAluno);
 
             //disciplina.Add(new Disciplina(1, 1, "Tecnologia Web", "5A", "SI"));
             //disciplina.Add(new Disciplina(1, 2, "Banco de Dados 1 ", "5A", "SI"));

@@ -5,14 +5,38 @@
 }
 
 <br />
-<div class="list-group">
-    <a href="#" class="list-group-item active">
+
         Aluno
-    </a>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     @foreach (var aluno in @Model) {
-        // /Disciplina/Index?idAluno=@aluno.IdAluno&nomeAluno=@aluno.Nome">@aluno.Nome
-        <a href="#" class="list-group-item" data-toggle="modal" data-target="#myModal"
-           onclick="loadDoc('@Url.Action("index","Disciplina", new { IdAluno = @aluno.IdAluno, nomeAluno = @aluno.Nome })')">@aluno.Nome</a>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_@aluno.IdAluno" aria-expanded="true" aria-controls="collapseOne">
+                        @aluno.Nome
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_@aluno.IdAluno" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <label>RA: </label>@aluno.RA
+                    <br />
+                    <label>Data Nascimento: </label>@aluno.DataNascimento.ToString("dd/MM/yyyy")
+                    <br />
+                    <div class="panel-footer">
+                        @*Disciplina/Index?idAluno=@aluno.IdAluno&nomeAluno=@aluno.Nome">@aluno.Nome*@
+                        <a href="#" data-toggle="modal" data-target="#myModal"
+                           onclick="loadDoc('@Url.Action("index","Disciplina", new { IdAluno = @aluno.IdAluno, nomeAluno = @aluno.Nome })')">
+                            Disciplinas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     }
 </div>
 
@@ -31,7 +55,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        
+
             </div>
         </div>
     </div>
