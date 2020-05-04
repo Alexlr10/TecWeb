@@ -19,18 +19,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var disciplina in @Model) {
+        @foreach (var disc in @Model) {
             <tr>
-                <td>@disciplina.IdDisciplina</td>
-                <td>@disciplina.Nome</td>
+                <td>@disc.IdDisciplina</td>
+                <td>@disc.Nome</td>
                 <td>
-                    @foreach(var aluno in disciplina.Alunos) {
+                    @foreach(var aluno in disc.Alunos) {
                     @aluno.Nome <b>-</b>
                     @aluno.RA <br />
                     }
                 </td>
-                <td>@disciplina.Semestre</td>
-                <td>@disciplina.Curso</td>
+                <td>@disc.Semestre</td>
+                <td>@disc.Curso</td>
 
             </tr>
         }

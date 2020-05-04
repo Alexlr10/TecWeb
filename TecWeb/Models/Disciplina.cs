@@ -38,7 +38,7 @@ namespace TecWeb.Models {
             SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
             minhaConexao.Open();
 
-            string select = "SELECT * from Disciplina inner join AlunoDisciplina " +
+            string select = "SELECT * from Disciplina  inner join AlunoDisciplina " +
                 "on Disciplina.IdDisciplina = AlunoDisciplina.IdDisciplina where AlunoDisciplina.IdAluno = " + idAluno;
             SqlCommand selectCommand = new SqlCommand(select, minhaConexao);
             SqlDataReader sqlRead = selectCommand.ExecuteReader();
@@ -63,7 +63,7 @@ namespace TecWeb.Models {
             SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
             minhaConexao.Open();
 
-            string select = "SELECT * from Disciplina ";
+            string select = "SELECT * from Disciplina";
             SqlCommand selectCommand = new SqlCommand(select, minhaConexao);
             SqlDataReader sqlRead = selectCommand.ExecuteReader();
 

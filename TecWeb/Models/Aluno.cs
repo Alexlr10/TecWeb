@@ -43,7 +43,7 @@ namespace TecWeb.Models {
 
             string select = "select * from Aluno inner join AlunoDisciplina " +
                 "on Aluno.IdAluno = AlunoDisciplina.IdAluno " +
-                "where AlunoDisciplina.IdAluno = " + idDisciplina;
+                "where AlunoDisciplina.IdDisciplina = " + idDisciplina;
             SqlCommand selectCommand = new SqlCommand(select, minhaConexao);
             SqlDataReader sqlRead = selectCommand.ExecuteReader();
 
