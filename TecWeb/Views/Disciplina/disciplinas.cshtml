@@ -3,13 +3,17 @@
     ViewBag.Title = "disciplinas";
 }
 
-<h2>disciplinas</h2>
+<h2>
+    Disciplinas
+    <span class="pull-right" ><a href="@Url.Action("novaDisciplina","Disciplina")" class="btn btn-primary">Nova Disciplina</a></span>
+</h2>
 
 <table class="table table-striped">
     <thead>
         <tr>
             <td>Cod . Disciplina</td>
             <td>Disciplina</td>
+            <td>Alunos - RA</td>
             <td>Semestre</td>
             <td>Curso</td>
         </tr>
@@ -19,6 +23,12 @@
             <tr>
                 <td>@disciplina.IdDisciplina</td>
                 <td>@disciplina.Nome</td>
+                <td>
+                    @foreach(var aluno in disciplina.Alunos) {
+                    @aluno.Nome <b>-</b>
+                    @aluno.RA <br />
+                    }
+                </td>
                 <td>@disciplina.Semestre</td>
                 <td>@disciplina.Curso</td>
 

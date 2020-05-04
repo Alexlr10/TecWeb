@@ -12,6 +12,7 @@ namespace TecWeb.Models {
         public string Nome { get; set; }
         public string Semestre { get; set; }
         public string Curso { get; set; }
+        public List<Aluno> Alunos { get; set; }
 
         public Disciplina(int idDisciplina, int idAluno, string nome, string semestre, string curso) {
             IdDisciplina = idDisciplina;
@@ -19,6 +20,7 @@ namespace TecWeb.Models {
             Nome = nome;
             Semestre = semestre;
             Curso = curso;
+            Alunos = Aluno.listarAlunoPelaDisciplina(idDisciplina);
         }
 
         public Disciplina(int idDisciplina, string nome, string semestre, string curso) {
@@ -26,6 +28,7 @@ namespace TecWeb.Models {
             Nome = nome;
             Semestre = semestre;
             Curso = curso;
+            Alunos = Aluno.listarAlunoPelaDisciplina(idDisciplina);
         }
 
         public static List<Disciplina> listarDisciplinaPeloAluno(int idAluno) {
@@ -75,5 +78,22 @@ namespace TecWeb.Models {
             return disciplina;
 
         }
+
+        public static string novaDisciplina(string nome, string semestre, string curso) {
+
+          
+
+            SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
+            minhaConexao.Open();
+
+            string insert = string.Format("INSERT INTO Disciplina (Nome, Semestre, Curso) VALUES ('{0}','{1}','{2}')", nome, semestre, curso);
+            SqlCommand selectCommand = new SqlCommand(insert, minhaConexao);
+            selectCommand.ExecuteNonQuery();
+
+            return "Sucesso";
+
+        }
+
+
     }
 }

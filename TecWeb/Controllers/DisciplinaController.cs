@@ -43,5 +43,18 @@ namespace TecWeb.Controllers {
             List<Disciplina> disciplina = Disciplina.listarDisciplina();
             return View(disciplina);
         }  
+
+        public ActionResult novaDisciplina() {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult novaDisciplina(string Nome, string Semestre, string Curso) {
+            string sucesso = Disciplina.novaDisciplina(Nome, Semestre, Curso);
+            ViewBag.sucesso = sucesso;
+
+            return View();
+        }
     }
 }

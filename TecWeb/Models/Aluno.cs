@@ -36,5 +36,26 @@ namespace TecWeb.Models {
             }
             return Alunos;
         }
+
+        public static List<Aluno> listarAlunoPelaDisciplina(int idDisciplina) {
+            SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
+            minhaConexao.Open();
+
+            string select = "select * from Aluno inner join AlunoDisciplina " +
+                "on Aluno.IdAluno = AlunoDisciplina.IdAluno " +
+                "where AlunoDisciplina.IdAluno = " + idDisciplina;
+            SqlCommand selectCommand = new SqlCommand(select, minhaConexao);
+            SqlDataReader sqlRead = selectCommand.ExecuteReader();
+
+
+            List<Aluno> Alunos = new List<Aluno>();
+            while (sqlRead.Read()) {
+                Alunos.Add(new Aluno(int.Parse(sqlRead["IdAluno"].ToString()),
+                                     sqlRead["Nome"].ToString(),
+                                     int.Parse(sqlRead["RA"].ToString()),
+                                     Convert.ToDateTime(sqlRead["DataNascimento"].ToString())));
+            }
+            return Alunos;
+        }
     }
 }
