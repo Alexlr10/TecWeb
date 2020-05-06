@@ -10,6 +10,7 @@ using TecWeb.Models;
 namespace TecWeb.Controllers {
     public class DisciplinaController : Controller {
         // GET: Disciplina
+        [HttpGet]
         public ActionResult Index(int idAluno, string nomeAluno) {
             //List<Disciplina> disciplina = new List<Disciplina>();
 
@@ -37,6 +38,12 @@ namespace TecWeb.Controllers {
 
 
             return View(disciplina);
+        }
+
+        [HttpPost]
+        public ActionResult Index(int idAluno, int idDisciplina) {
+            string resultad = Disciplina.excluirVinculoDisciplinaAluno(idAluno, idDisciplina);
+            return View();
         }
 
        public ActionResult disciplinas() {

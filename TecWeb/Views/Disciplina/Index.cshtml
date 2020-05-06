@@ -28,7 +28,7 @@
                 <td>@disciplina.Semestre</td>
                 <td>@disciplina.Curso</td>
                 <td>
-                    <button class="btn btn-danger">Excluir</button>
+                    <button onclick="loadDoc('@Url.Action("index","Disciplina", new { idAluno = @disciplina.IdAluno, idDisciplina = @disciplina.IdDisciplina })','POST')" class="btn btn-danger">Excluir</button>
                 </td>
               
             </tr>

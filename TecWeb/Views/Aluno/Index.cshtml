@@ -27,7 +27,7 @@
                     <div class="panel-footer">
                         @*Disciplina/Index?idAluno=@aluno.IdAluno&nomeAluno=@aluno.Nome">@aluno.Nome*@
                         <a href="#" data-toggle="modal" data-target="#myModal"
-                           onclick="loadDoc('@Url.Action("index","Disciplina", new { IdAluno = @aluno.IdAluno, nomeAluno = @aluno.Nome })')">
+                           onclick="loadDoc('@Url.Action("index","Disciplina", new { idAluno = @aluno.IdAluno, nomeAluno = @aluno.Nome })','GET')">
                             Disciplinas
                         </a>
                     </div>
