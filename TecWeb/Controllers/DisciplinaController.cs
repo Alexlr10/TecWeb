@@ -17,7 +17,6 @@ namespace TecWeb.Controllers {
             ViewBag.idAluno = idAluno;
             ViewBag.nomeAluno = nomeAluno;
 
-            List<Disciplina> disciplina = Disciplina.listarDisciplinaPeloAluno(idAluno);
 
             //disciplina.Add(new Disciplina(1, 1, "Tecnologia Web", "5A", "SI"));
             //disciplina.Add(new Disciplina(1, 2, "Banco de Dados 1 ", "5A", "SI"));
@@ -35,15 +34,17 @@ namespace TecWeb.Controllers {
             //disciplina.Add(new Disciplina(4, 6, "Arquitetura de Computadores", "1A", "SI"));
 
             //List<Disciplina> DisciplinasDeAluno = disciplina.Where(x => x.IdAluno == idAluno).ToList();
-
-
+            
+            List<Disciplina> disciplina = Disciplina.listarDisciplinaPeloAluno(idAluno);
             return View(disciplina);
         }
 
         [HttpPost]
-        public ActionResult Index(int idAluno, int idDisciplina) {
+        public ActionResult Index(int idAluno, int idDisciplina, string alunoNome) {
             string resultad = Disciplina.excluirVinculoDisciplinaAluno(idAluno, idDisciplina);
-            return View();
+            @ViewBag.nomeAluno = alunoNome;
+            List<Disciplina> disciplina = Disciplina.listarDisciplinaPeloAluno(idAluno);
+            return View(disciplina);
         }
 
        public ActionResult disciplinas() {
