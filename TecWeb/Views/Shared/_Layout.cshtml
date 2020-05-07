@@ -9,14 +9,13 @@
     @Scripts.Render("~/bundles/modernizr")
     <script>
         function loadDoc(rota, verbo) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML = this.responseText;
+              $.ajax({
+                method: verbo,
+                url: rota,
+                success: function (retorno) {
+                    $("#demo").html(retorno);
                 }
-            };
-            xhttp.open(verbo, rota, true);
-            xhttp.send();
+            });
         }
     </script>
 </head>
