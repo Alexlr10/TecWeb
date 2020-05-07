@@ -76,7 +76,14 @@ namespace TecWeb.Models {
             }
 
             return disciplina;
+        }
 
+        public static List<String> buscaDisciplinas(string nome) {
+            //Retorna o nome que inicie igual ao parametro, comparando e 
+            //ignorando os caracteres maisculos e minusculos
+            return listarDisciplina()
+                .Where(p => p.Nome.StartsWith(nome, StringComparison.OrdinalIgnoreCase))
+                .Select(p => p.Nome).ToList();
         }
 
         public static string novaDisciplina(string nome, string semestre, string curso) {

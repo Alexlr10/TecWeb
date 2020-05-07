@@ -47,6 +47,11 @@ namespace TecWeb.Controllers {
             return View(disciplina);
         }
 
+        public ActionResult buscarDisciplinas(String term) {
+
+            return Json(Disciplina.buscaDisciplinas(term), JsonRequestBehavior.AllowGet);
+        }
+
        public ActionResult disciplinas() {
             List<Disciplina> disciplina = Disciplina.listarDisciplina();
             return View(disciplina);

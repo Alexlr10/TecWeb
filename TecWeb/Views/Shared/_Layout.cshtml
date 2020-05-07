@@ -17,6 +17,12 @@
                 }
             });
         }
+
+        $(document).ready(function () {
+            $("#campoBusca").autocomplete({
+                source: '@Url.Action("buscarDisciplinas","Disciplina")'
+            });
+        });
     </script>
 </head>
 <body>
@@ -32,10 +38,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                  @*  <li>@Html.ActionLink("Principal", "Index", "Home")</li>*@
+                    @*  <li>@Html.ActionLink("Principal", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Aluno", "Index", "Aluno")</li>
                     <li>@Html.ActionLink("Disciplina", "disciplinas", "Disciplina")</li>
                 </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" id="campoBusca" class="form-control" placeholder="Buscar">
+                    </div>
+                    @* <button type="submit" class="btn btn-default">Submit</button>*@
+                </form>
             </div>
         </div>
     </div>
@@ -50,5 +62,23 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        function loadDoc(rota, verbo) {
+              $.ajax({
+                method: verbo,
+                url: rota,
+                success: function (retorno) {
+                    $("#demo").html(retorno);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#campoBusca").autocomplete({
+                source: '@Url.Action("buscarDisciplinas","Disciplina")'
+            });
+        });
+    </script>
 </body>
 </html>
